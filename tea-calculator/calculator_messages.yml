@@ -1,0 +1,13 @@
+
+  welcome: "Welcome to Calculator! Enter your name:"
+  name: "Please enter your valid name."
+  greet: "Hi"
+  first_number: "What is the first number?"
+  second_number: "What is the second number?"
+  invalid_number_message: "Hmm...that doesn't look like a valid number"
+  operator_option: "Must choose 1, 2, 3, or 4"
+  buffer: "the two numbers..."
+  result: "The result is: "
+  next_round: "Do you want to perform another calculation (Y to continue)"
+  end: "Good bye"
+  
