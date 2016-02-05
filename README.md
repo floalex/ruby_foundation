@@ -17,4 +17,6 @@ Rock Paper Scissor game flow:
 
 - Asks the user to make a choice
 - Asks the computer to make a choice
-- Displays the winner
+- Displays the winner of the round
+- Displays current score
+- Displays the ultimate winner who won the first 5 rounds in total
