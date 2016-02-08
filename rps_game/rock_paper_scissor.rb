@@ -30,7 +30,7 @@ def update_score(score, player, computer, choice, computer_choice)
   elsif win?(computer_choice, choice)
     score[computer] += 1
   end
-  end
+end
 
 def display_score(score)
   if score[:player] == 5
