@@ -26,10 +26,13 @@ Rock Paper Scissor game flow:
 
 ### 1. Tic Tac Toe
 - Displays the initial empty 3X3 board
-- Asks the user to place an empty square on the board
+- Lets the computer to choose the first player randomly
+- Asks the user to place an empty square on the board if user is the first player
 - Computer places a square
 - Displays the updated board
 - If winner, displays the winner
 - If board is full, displays tie
 - If neither winner nor board is full, repeat the game flow
+- Keeps score of how many times the player wins, the first player reaches 5 points wins the game
+- Adds computer AI to take attacking and defensive moves when it detects potential wins/loss moves from player
 - Asks the user to play again or exit
