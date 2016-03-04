@@ -36,3 +36,17 @@ Rock Paper Scissor game flow:
 - Keeps score of how many times the player wins, the first player reaches 5 points wins the game
 - Adds computer AI to take attacking and defensive moves when it detects potential wins/loss moves from player
 - Asks the user to play again or exit
+
+### 2. Twenty One
+- Starts with a normal 52-card deck consisting of the 4 suits (hearts, diamonds, clubs, and spades), and 13 values (2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king, ace). 
+- Computer deals two cards with the suffled deck to player and dealer(computer) in the first round.
+- The player can see his/her 2 cards, but can only see one of the dealer's cards.
+- Player goes first, and needs to decide if he/she want to stay(not getting more cards) or hit(get one more card)
+- When the player stays, it's the dealer's turn. The dealer must follow a strict rule for determining whether to hit or stay: hit until the total is at least 17.
+- Whoever gets as close to 21 as possible wins the round, without going over. If you go over 21, it's a "bust" and you lose.
+- Card values:
+  | Card                 | Value      |
+  | ---------------------| -----      |
+  | 2 -10                | face value |
+  | jack, queen, king    |  10        |
+  | ace                  |  1 or 11   |
