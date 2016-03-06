@@ -54,18 +54,22 @@ def detect_result(dealer_cards, player_cards)
   end
 end
 
-def display_result(dealer_cards, player_cards)
+def display_result(dealer_cards, player_cards, dealer_win, player_win)
   result = detect_result(dealer_cards, player_cards)
   
   case result
   when :player_busted
     prompt("You busted! Dealder wins!")
+    dealer_win << 1
   when :dealer_busted
     prompt("Dealer busted! You win!")
+    player_win << 1
   when :player
     prompt("You win!")
+    player_win << 1
   when :dealer
     prompt("Dealer wins!")
+    dealer_win << 1
   when :tie
     prompt("It's a tie.")
   end
@@ -78,8 +82,13 @@ def play_again?
   answer.downcase.start_with?('y')
 end
 
+prompt("Welcome to Twenty One game!")
+prompt("Whoever wins five hands first, wins the game!")
+
+player_win = []
+dealer_win = []
+
 loop do
-  prompt("Welcome to Twenty One game!")
   
   # initialize deck
   new_deck = initialize_deck
@@ -116,11 +125,13 @@ loop do
     break if player_turn == 's' || busted?(player_cards)
   end
   
+  player_total = total(player_cards)
   if busted?(player_cards)
-    display_result(dealer_cards, player_cards)
+    display_result(dealer_cards, player_cards, dealer_win, player_win)
+    prompt("You have #{player_win.size} score; dealer has #{dealer_win.size}")
     play_again? ? next : break
   else
-    prompt("You stayed at #{total(player_cards)}")
+    prompt("You stayed at #{player_total}")
   end
   
   # dealer turn
@@ -133,20 +144,29 @@ loop do
     prompt("Dealer cards are now: #{dealer_cards}")
   end  
     
+  dealer_total = total(dealer_cards)
   if busted?(dealer_cards)
-    prompt("Dealer total is now: #{total(dealer_cards)}")
-    display_result(dealer_cards, player_cards)
+    prompt("Dealer total is now: #{dealer_total}")
+    display_result(dealer_cards, player_cards, dealer_win, player_win)
+    prompt("You have #{player_win.size} score; dealer has #{dealer_win.size} score")
     play_again? ? next : break
   else
-    prompt("Dealer stayed at #{total(dealer_cards)}")
+    prompt("Dealer stayed at #{dealer_total}")
   end
   
   # compare cards - both player and dealer stay
   puts "==============="
-  prompt("Dealer has #{dealer_cards}, for a total of: #{total(dealer_cards)}")
-  prompt("Player has #{player_cards}, for a total of: #{total(player_cards)}")
+  prompt("You and dealer have chosen to stay.")
+  prompt("Dealer has #{dealer_cards}, for a total of: #{dealer_total}")
+  prompt("Player has #{player_cards}, for a total of: #{player_total}")
   
-  display_result(dealer_cards, player_cards)
+  display_result(dealer_cards, player_cards, dealer_win, player_win)
+  prompt("You have #{player_win.size} score; dealer has #{dealer_win.size} score")
+  
+  if player_win.size == 5 || dealer_win.size == 5
+    prompt("We have a winner! This round is over.")
+    break
+  end
   
   break unless play_again?
 end
